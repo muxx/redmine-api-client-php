@@ -1,2 +1,1 @@
-# redmine-api-client-php
-PHP API Client for Redmine
+# PHP API client for Redmine

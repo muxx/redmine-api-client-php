@@ -1,0 +1,20 @@
+{
+    "name": "muxx/redmine-api-client-php",
+    "description": "PHP API client for Redmine",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilyas Salikhov",
+            "email": "salikhoff@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "ext-curl": "*",
+        "symfony/options-resolver": "^4.1"
+    },
+    "autoload": {
+        "psr-0": { "Redmine\\": "lib/" }
+    }
+}
