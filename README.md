@@ -16,7 +16,7 @@ require 'vendor/autoload.php';
 
 $c = new Redmine\ApiClient('https://redmine.somehost.com', 'some-api-key');
 
-$response = $c->requestGet('projects/consultant/memberships');
+$response = $c->requestGet('projects/some-project/memberships');
 
 foreach ($response['memberships'] as $membership) {
     if (isset($membership['user']['name'])) {
