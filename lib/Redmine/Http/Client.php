@@ -67,7 +67,7 @@ class Client
         }
 
         if ($statusCode >= 400 && $statusCode < 500) {
-            throw new BadRequestException('Error in billing api request: ' . $responseBody, $statusCode);
+            throw new BadRequestException('Error in redmine api request: ' . $responseBody, $statusCode);
         }
 
         return new ApiResponse($statusCode, $responseBody);
