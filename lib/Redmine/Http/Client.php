@@ -13,6 +13,8 @@ class Client
 {
     const METHOD_GET = 'GET';
     const METHOD_POST = 'POST';
+    const METHOD_PUT = 'PUT';
+    const METHOD_DELETE = 'DELETE';
 
     protected $defaultHeaders;
     protected $url;
@@ -86,7 +88,15 @@ class Client
                 'postFields',
                 'cacheLifetime'
             ])
-            ->setAllowedValues('method', [static::METHOD_POST, static::METHOD_GET])
+            ->setAllowedValues(
+                'method',
+                [
+                    static::METHOD_POST,
+                    static::METHOD_GET,
+                    static::METHOD_PUT,
+                    static::METHOD_DELETE,
+                ]
+            )
             ->setAllowedTypes('timeout', 'int')
             ->setAllowedTypes('headers', 'array')
             ->setAllowedTypes('query', 'array')
