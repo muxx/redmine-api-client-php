@@ -44,13 +44,17 @@ class Client
         curl_setopt($curlHandler, CURLOPT_FAILONERROR, false);
         curl_setopt($curlHandler, CURLOPT_TIMEOUT, $options['timeout']);
         curl_setopt($curlHandler, CURLOPT_CONNECTTIMEOUT, 30);
-        if (!empty($options['headers'])) {
-            curl_setopt($curlHandler, CURLOPT_HTTPHEADER, $options['headers']);
-        }
+
+        $options['headers'][] = 'Content-type: application/json';
 
         if (\in_array($options['method'], [self::METHOD_DELETE, self::METHOD_PUT], true)) {
             curl_setopt($curlHandler, CURLOPT_CUSTOMREQUEST, $options['method']);
         }
+
+        if (!empty($options['headers'])) {
+            curl_setopt($curlHandler, CURLOPT_HTTPHEADER, $options['headers']);
+        }
+
         if (\in_array($options['method'], [self::METHOD_POST, self::METHOD_PUT], true)) {
             curl_setopt($curlHandler, CURLOPT_POST, true);
             curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $options['postFields']);

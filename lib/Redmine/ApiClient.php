@@ -35,7 +35,7 @@ class ApiClient
 
     public function requestPost(string $path, array $postData = [], array $queryParameters = []): ApiResponse
     {
-        return $this->client->makeRequest($path . 'json', [
+        return $this->client->makeRequest($path . '.json', [
             'method' => Client::METHOD_POST,
             'postFields' => json_encode($postData),
             'query' => $queryParameters,
@@ -44,7 +44,7 @@ class ApiClient
 
     public function requestPut(string $path, array $putData = [], array $queryParameters = []): ApiResponse
     {
-        return $this->client->makeRequest($path . 'json', [
+        return $this->client->makeRequest($path . '.json', [
             'method' => Client::METHOD_PUT,
             'postFields' => json_encode($putData),
             'query' => $queryParameters,
