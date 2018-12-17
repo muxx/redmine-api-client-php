@@ -19,12 +19,12 @@ class ApiResponse implements \ArrayAccess
     {
         $this->statusCode = $statusCode;
 
-        if (null !== $responseBody) {
+        if (null !== $responseBody && '' !== $responseBody) {
             $response = json_decode($responseBody, true);
 
             if (!$response && JSON_ERROR_NONE !== ($error = json_last_error())) {
                 throw new InvalidJsonException(
-                    "Invalid JSON in the API response body. Error code #$error",
+                    "Invalid JSON in the API response body:\n\n$responseBody",
                     $error
                 );
             }
