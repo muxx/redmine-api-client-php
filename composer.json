@@ -13,7 +13,7 @@
         "php": ">=7.1.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "symfony/options-resolver": "^4.1"
+        "symfony/options-resolver": "^3.4|^4.1"
     },
     "autoload": {
         "psr-0": { "Redmine\\": "lib/" }
