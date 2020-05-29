@@ -18,6 +18,11 @@ class ApiClient
         $this->client = new Client($url, ['X-Redmine-API-Key: ' . $apiKey]);
     }
 
+    public function getBaseUrl(): string
+    {
+        return $this->client->getBaseUrl();
+    }
+
     public function requestGet(string $path, ?array $queryParameters = []): ApiResponse
     {
         return $this->client->makeRequest($path . '.json', [

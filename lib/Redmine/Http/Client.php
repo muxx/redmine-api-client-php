@@ -25,6 +25,11 @@ class Client
         $this->defaultHeaders = $defaultHeaders;
     }
 
+    public function getBaseUrl(): string
+    {
+        return $this->url;
+    }
+
     public function makeRequest(string $path, array $options = []): ApiResponse
     {
         $optionsResolver = new OptionsResolver();
