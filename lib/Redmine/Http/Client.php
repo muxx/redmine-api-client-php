@@ -77,11 +77,17 @@ class Client
         }
 
         if ($statusCode >= 500) {
-            throw new InternalServerErrorException('Error in redmine api.', $statusCode);
+            throw new InternalServerErrorException(
+                sprintf('Error in redmine api on %s %s', $options['method'], $path),
+                $statusCode
+            );
         }
 
         if ($statusCode >= 400 && $statusCode < 500) {
-            throw new BadRequestException('Error in redmine api request: ' . $responseBody, $statusCode);
+            throw new BadRequestException(
+                sprintf('Error in redmine api request %s %s: %s', $options['method'], $path, $responseBody),
+                $statusCode
+            );
         }
 
         return new ApiResponse($statusCode, $responseBody);
