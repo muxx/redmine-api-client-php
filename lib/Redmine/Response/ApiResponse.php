@@ -4,15 +4,12 @@ namespace Redmine\Response;
 
 use Redmine\Exception\InvalidJsonException;
 
-/**
- * Response from billing
- */
 class ApiResponse implements \ArrayAccess
 {
-    // HTTP response status code
+    /** @var int */
     protected $statusCode;
 
-    // response assoc array
+    /** @var array<string, mixed> response assoc array */
     protected $response;
 
     public function __construct(int $statusCode, ?string $responseBody = null)
