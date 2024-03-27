@@ -6,18 +6,17 @@ use Redmine\Exception\InvalidJsonException;
 
 class ApiResponse implements \ArrayAccess
 {
-    /** @var int */
-    protected $statusCode;
+    protected int $statusCode;
 
     /** @var array<string, mixed> response assoc array */
-    protected $response;
+    protected array $response;
 
-    public function __construct(int $statusCode, ?string $responseBody = null)
+    public function __construct(int $statusCode, string $responseBody = null)
     {
         $this->statusCode = $statusCode;
 
         if (null !== $responseBody && '' !== $responseBody) {
-            $response = json_decode($responseBody, true);
+            $response = \json_decode($responseBody, true);
 
             if (!$response && JSON_ERROR_NONE !== ($error = json_last_error())) {
                 throw new InvalidJsonException(
@@ -40,7 +39,7 @@ class ApiResponse implements \ArrayAccess
         return $this->statusCode < 400;
     }
 
-    public function __get($name)
+    public function __get($name): mixed
     {
         if (!isset($this->response[$name])) {
             throw new \InvalidArgumentException("Property \"$name\" not found");
@@ -74,7 +73,7 @@ class ApiResponse implements \ArrayAccess
         return isset($this->response[$offset]);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         if (!isset($this->response[$offset])) {
             throw new \InvalidArgumentException("Property \"$offset\" not found");
