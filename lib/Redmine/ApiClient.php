@@ -12,11 +12,11 @@ use Redmine\Exception\InternalServerErrorException;
 
 class ApiClient
 {
-    protected $client;
-    protected $requestFactory;
-    protected $streamFactory;
-    protected $url;
-    protected $apiKey;
+    protected ClientInterface $client;
+    protected RequestFactoryInterface $requestFactory;
+    protected StreamFactoryInterface $streamFactory;
+    protected string $url;
+    protected string $apiKey;
 
     public function __construct(
         ClientInterface $client,
@@ -125,6 +125,10 @@ class ApiClient
         $responseBody = $response->getBody()->getContents();
         if ($statusCode >= 400 && $statusCode < 500) {
             throw new BadRequestException(
+                new ApiResponse(
+                    $statusCode,
+                    $responseBody
+                ),
                 sprintf('Error in redmine api request %s %s: %s', $request->getMethod(), $request->getUri(), $responseBody),
                 $statusCode
             );
