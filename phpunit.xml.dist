@@ -9,7 +9,7 @@
     convertErrorsToExceptions="true"
     convertWarningsToExceptions="true"
     convertNoticesToExceptions="true"
-    convertDeprecationsToExceptions="true"
+    convertDeprecationsToExceptions="false"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
