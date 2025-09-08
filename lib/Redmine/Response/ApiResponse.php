@@ -11,7 +11,7 @@ class ApiResponse implements \ArrayAccess
     /** @var array<string, mixed> response assoc array */
     protected array $response;
 
-    public function __construct(int $statusCode, string $responseBody = null)
+    public function __construct(int $statusCode, ?string $responseBody = null)
     {
         $this->statusCode = $statusCode;
 
